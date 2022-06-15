@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
 const https = require("https")
+
 //process.env.PORT is for heroku server
 const PORT = process.env.PORT || 3000;
 
@@ -34,11 +35,11 @@ app.post("/", function(req,res){
     }
     const jsonData = JSON.stringify(data)
 
-    const url = "https://us8.api.mailchimp.com/3.0/lists/aa39a67a34"
+    const url = "https://us8.api.mailchimp.com/3.0/lists/id"
 
     const options = {
         method: "POST",
-        auth: "ayush:f37b9d8d4de1096fe0eccb9825500b84-us8"
+        auth: "api key"
     }
 
     const request = https.request(url, options, function(response){
@@ -63,7 +64,7 @@ app.post("/failure", function(req, res){
 })
 
 
-app.listen(PORT, function(req, res){
+app.listen(process.env.PORT || 3000, function(req, res){
     console.log("The server is running on port 3000");
 })
 
